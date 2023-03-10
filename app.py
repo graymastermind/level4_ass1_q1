@@ -30,13 +30,16 @@ UPLOAD_FOLDER = 'uploads'
 MAX_FILE_SIZE = 10 * 1024 * 1024  # 10MB
 console_text = []
 
-
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = 'secret'
 
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
+    try:
+        os.mkdir('uploads')
+    except FileExistsError:
+        print("folder exists")
     if request.method == 'POST':
         file = request.files['file']
         if file and allowed_file(file.filename):
