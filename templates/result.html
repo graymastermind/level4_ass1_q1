@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predictions</title>
+</head>
+<body>
+    <h1>File Uploaded</h1>
+    <p>Uploaded file: {filename}</p>
+
+    {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+
+    <a href="/">Upload another file</a>
+
+</body>
+</html>
